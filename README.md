@@ -1,2 +1,2 @@
-# Ansible prueba Iquall Networks 666
+# Ansible prueba Iquall Networks
 # Lunes 12hs
