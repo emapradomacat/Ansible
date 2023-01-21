@@ -13,7 +13,7 @@
       name: apache2
       state: latest
 
-  - name: Instal fake package
+  - name: Install fake package
     apt: 
       name: emaprado_fake
 
