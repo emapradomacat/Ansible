@@ -4,14 +4,30 @@
   become: true
   tasks:
 
-  - name: update repository index
+  - name: Update repository index
     apt:
       update_cache: yes
+
+  - name: Install php for CentOS servers
+    apt:
+      name: php
+      state: latest
+    when: ansible_distribution == "CentOS"
+
+
+- hosts: web_servers
+  become: true
+  tasks:
 
   - name: Install tmux package
     apt:
       name: tmux
       state: latest
+
+
+- hosts: db_servers
+  become: true
+  tasks:
 
   - name: Install apache2 and vim-nox package for Ubuntu servers
     apt:
@@ -21,14 +37,9 @@
       state: latest
     when: ansible_distribution == "Ubuntu"
 
-  - name: Install php for CentOS servers
-    apt: 
-      name: php
-      state: latest
-    when: ansible_distribution == "CentOS"
-
   - name: Install fake package
-    apt: 
+    apt:
       name: emaprado_fake
+      state: latest
 
 
