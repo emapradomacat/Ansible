@@ -8,10 +8,24 @@
     apt:
       update_cache: yes
 
-  - name: Install apache2 package
+  - name: Install tmux package
     apt:
-      name: apache2
+      name: tmux
       state: latest
+
+  - name: Install apache2 and vim-nox package for Ubuntu servers
+    apt:
+      name:
+        - apache2
+        - vim-nox
+      state: latest
+    when: ansible_distribution == "Ubuntu"
+
+  - name: Install php for CentOS servers
+    apt: 
+      name: php
+      state: latest
+    when: ansible_distribution == "CentOS"
 
   - name: Install fake package
     apt: 
