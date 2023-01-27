@@ -1,0 +1,41 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: Remove Apache for CENTOS servers
+    dnf: name=httpd state=absent
+    when: ansible_distribution == "CentOS"
+
+  - name: Remove php for Debian servers
+    apt: name=php state=absent update_cache=yes
+    when: ansible_distribution == "Debian"
+
+- hosts: web_servers
+  become: true
+  tasks:
+
+  - name: Remove Apache
+    apt: name=apache2 state=absent update_cache=yes
+    notify: 
+      - "Ensure Apache is stopped"
+
+  handlers:
+    - name: Ensure Apache is stopped
+      service: name=apache2 state=stopped enabled=yes
+
+
+- hosts: db_servers
+  become: true
+  tasks:
+
+  - name: Remove Vim for Ubuntu
+    apt: name=vim state=absent update_cache=yes
+    when: ansible_distribution == "Ubuntu"
+
+  - name: Remove Vim for CentOS
+    dnf: name=vim state=absent 
+    when: ansible_distribution == "CentOS"
+
+

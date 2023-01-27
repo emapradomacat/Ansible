@@ -1,0 +1,40 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+
+  - name: Install Apache for CentOS servers
+    dnf: name=httpd state=latest cacheonly=true
+    when: ansible_distribution == "CentOS"
+
+  - name: Install php for Debian servers
+    apt: name=php state=latest update_cache=yes
+    when: ansible_distribution == "Debian"
+
+- hosts: web_servers
+  become: true
+  tasks:
+
+  - name: Install Apache
+    apt: name=apache2 state=latest update_cache=yes
+    notify: 
+      - "Ensure Apache is running"
+
+  handlers:
+    - name: Ensure Apache is running
+      service: name=apache2 state=started enabled=yes
+
+
+- hosts: db_servers
+  become: true
+  tasks:
+
+  - name: Install Vim for Ubuntu servers
+    apt: name=vim state=latest update_cache=yes
+    when: ansible_distribution == "Ubuntu"
+
+  - name: Install Vim for CentOS servers
+    dnf: name=vim-enhanced state=latest cacheonly=true
+    when: ansible_distribution == "CentOS"
