@@ -1,0 +1,13 @@
+- name: Install Vim for Ubuntu servers
+  apt: 
+    name: vim
+    state: latest 
+    update_cache: true
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install Vim for Centos servers
+  dnf: 
+    name: vim-enhanced 
+    state: latest 
+    cacheonly: true
+  when: ansible_distribution == "CentOS"

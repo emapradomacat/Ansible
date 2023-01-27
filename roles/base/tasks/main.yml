@@ -1,0 +1,14 @@
+- name: Install Apache for CentOS servers
+  dnf: 
+    name: httpd 
+    state: latest 
+    cacheonly: true
+  when: ansible_distribution == "CentOS"
+
+- name: Install php for Debian servers
+  apt: 
+    name: php 
+    state: latest 
+    update_cache: yes
+  when: ansible_distribution == "Debian"
+
