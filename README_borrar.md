@@ -6,17 +6,20 @@ Proyecto con despliegue Dockerizado que contiene una aplicación "Reloj/Calendar
 ## Estructura 
 
 proyecto/
+- README.md
+- docker-compose.yaml
 - backend/
-  - settings.py
+  - Dockerfile
+  - Project/
+    - views.py
+    - setting.py
   - ...
 - frontend/
+  - Dockerfile
   - src/
-  - public/
+    - App.js
+    - App.css
   - ...
-- docker-compose.yml
-- README.md
-
-
 
 
 # ***Despliegue Local***
