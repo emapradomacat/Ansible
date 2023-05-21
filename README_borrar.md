@@ -1,6 +1,6 @@
-# Aplicación "Reloj/Calendario" Dockerizada
+# Aplicación "Reloj/Calendario" con Docker-Compose
 
-Este es un proyecto Dockerizado que contiene una aplicación "Reloj/Calendario" desarrollada con Django (backend) y React.js (frontend). Permite mostrar la fecha y hora actual en un formato específico.
+Proyecto con despliegue Dockerizado que contiene una aplicación "Reloj/Calendario" desarrollada con Django (backend) y React.js (frontend). Permite mostrar la fecha y hora actual en un formato específico.
 
 ## Requisitos Previos
 
@@ -15,18 +15,18 @@ Sigue los pasos a continuación para compilar y desplegar la aplicación en tu e
 
 
 ### 1. Clonar el repositorio
-
+```
 git clone <URL_DEL_REPOSITORIO>
 cd <NOMBRE_DEL_REPOSITORIO>
-
+```
 
 ### 2. Desplegar con Docker-Compose
 
 Esto creará y ejecutará los contenedores de Docker para el backend y el frontend de la aplicación.
-
+```
 docker-compose build
 docker-compose up
-
+```
 
 ### 3. Acceder a la aplicación
 
@@ -43,6 +43,8 @@ La lista de contenedores debe mostrar dos contenedores en ejecución y el mapeo 
 
 ```
 $docker ps
+```
+```
 CONTAINER ID   IMAGE              COMMAND                  CREATED         STATUS         PORTS                                       NAMES
 53c15d00c4b0   django-react-api   "bash -c 'python man…"   2 minutes ago   Up 2 minutes   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp   django-react-api-1
 c493f03a70f9   django-react-web   "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   0.0.0.0:3000->3000/tcp, :::3000->3000/tcp   django-react-web-1
