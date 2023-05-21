@@ -1,17 +1,32 @@
 # Aplicación "Reloj/Calendario" con Docker-Compose
 
-Proyecto con despliegue Dockerizado que contiene una aplicación "Reloj/Calendario" desarrollada con Django (backend) y React.js (frontend). Permite mostrar la fecha y hora actual en un formato específico.
+Proyecto con despliegue Dockerizado que contiene una aplicación "Reloj/Calendario" desarrollada con Django (backend) y React.js (frontend). Muestra fecha y hora actual en un formato específico.
+
+
+## Estructura 
+
+proyecto/
+  ├── backend/
+  │   ├── settings.py
+  │   ├── ...
+  ├── frontend/
+  │   ├── src/
+  │   ├── public/
+  │   ├── ...
+  ├── docker-compose.yml
+  ├── README.md
+
+
+# ***Despliegue Local***
+Sigue los pasos a continuación para compilar y desplegar la aplicación en tu entorno local.
+
 
 ## Requisitos Previos
 
 Asegúrate de tener instalado lo siguiente antes de continuar:
-
+- Python
 - Docker
 - Docker Compose
-
-## Instrucciones de compilación y despliegue local
-
-Sigue los pasos a continuación para compilar y desplegar la aplicación en tu entorno local.
 
 
 ### 1. Clonar el repositorio
@@ -22,7 +37,7 @@ cd <NOMBRE_DEL_REPOSITORIO>
 
 ### 2. Desplegar con Docker-Compose
 
-Esto creará y ejecutará los contenedores de Docker para el backend y el frontend de la aplicación.
+Ejecutar los siguientes comando desde el directorio raíz del proyecto. Esto creará y ejecutará los contenedores de Docker para el backend y el frontend de la aplicación.
 ```
 docker-compose build
 docker-compose up
@@ -35,7 +50,6 @@ Una vez que los contenedores estén en ejecución, podrás acceder a la aplicaci
 http://localhost:3000
 
 ¡Y eso es todo! Ahora deberías ver la aplicación de Reloj/Calendario funcionando en tu entorno local.
-
 
 ### 4. Resultado Esperado
 
@@ -50,7 +64,6 @@ CONTAINER ID   IMAGE              COMMAND                  CREATED         STATU
 c493f03a70f9   django-react-web   "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   0.0.0.0:3000->3000/tcp, :::3000->3000/tcp   django-react-web-1
 ```
 
-
 ### 5. Detener y eliminar contenedores
 
 ```
@@ -58,22 +71,43 @@ docker-compose down
 ```
 
 
-## Instrucciones de compilación y despliegue en la Nube
+# ***Despliegue en la Nube***
+Sigue los pasos a continuación para compilar y desplegar la aplicación en la nube.
 
-Si deseas desplegar la aplicación en la nube, puedes seguir los siguientes pasos:
 
-1. Configura una cuenta en el proveedor de nube de tu elección (por ejemplo, AWS, GCP, Azure).
-2. Crea una instancia o máquina virtual en la nube.
-3. Instala Docker y Docker Compose en la instancia o máquina virtual.
-4. Clona el repositorio en la instancia o máquina virtual.
-5. Compila y ejecuta los contenedores Docker utilizando el comando docker-compose up.
-6. Configura las reglas de firewall y la configuración de red necesarias para permitir el acceso a  a aplicación desde Internet.
-7. Obtén la dirección IP o el nombre de dominio público de la instancia o máquina virtual.
-8. Accede a la aplicación utilizando la dirección IP o el nombre de dominio público seguido del puerto 3000 en tu navegador web.
-9. Recuerda consultar la documentación y las guías de tu proveedor de nube específico para obtener instrucciones detalladas sobre cómo desplegar aplicaciones en la nube.
+## Requisitos Previos
+
+Asegúrate de tener en cuenta lo siguiente:
+- Cuenta en el proveedor de servicios en la nube (por ejemplo, AWS, Google Cloud, Azure, etc.).
+- Conocimiento básico sobre cómo trabajar con la plataforma en la nube seleccionada.
+
+
+## Configuración del entorno en la nube
+
+1. Crea una instancia de servidor virtual (VM) en la nube utilizando la plataforma elegida.
+2. Configura las credenciales y permisos necesarios para acceder a los servicios de la nube (por 3.ejemplo, claves de API, roles de IAM, etc.).
+3. Instala Docker y Docker Compose en la instancia de VM.
+4. Clona el repositorio en la instancia de VM
+
+
+## Configuración de variables de entorno
+1. Configura las variables de entorno necesarias para el entorno de producción en la nube. Esto puede incluir configuraciones de bases de datos, claves de API, etc.
+2. Asegúrate de proporcionar instrucciones claras sobre cómo establecer y gestionar las variables de entorno en la plataforma de la nube seleccionada.
+
+
+## Despliegue de la aplicación
+1. Navega hasta el directorio raíz del proyecto clonado en la instancia de VM.
+2. Ejecuta el comando docker-compose up -d para iniciar los servicios de contenedores.
+3. Verifica que los contenedores estén en funcionamiento correctamente ejecutando docker-compose ps.
+
+
+## Escalado y administración
+1. Proporciona instrucciones sobre cómo escalar la aplicación en la nube, en caso de que sea necesario.
+2. Explica cómo monitorear y administrar los recursos en la nube, como el uso de registros de contenedores, supervisión de métricas, ajuste de escalado automático, etc.
 
 
 
 ## Autor
 
 Este proyecto fue creado por Emanuel Prado Macat.
+Cualquier consulta a emapradomacat@gmail.com -
