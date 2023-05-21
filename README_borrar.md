@@ -45,17 +45,19 @@ http://localhost:3000
 
 La lista de contenedores debe mostrar dos contenedores en ejecución y el mapeo de puertos de la siguiente manera:
 
+```
 $docker ps
 CONTAINER ID   IMAGE              COMMAND                  CREATED         STATUS         PORTS                                       NAMES
 53c15d00c4b0   django-react-api   "bash -c 'python man…"   2 minutes ago   Up 2 minutes   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp   django-react-api-1
 c493f03a70f9   django-react-web   "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   0.0.0.0:3000->3000/tcp, :::3000->3000/tcp   django-react-web-1
-$
+```
 
 
 ## 6. Detener y eliminar contenedores
 
+```
 docker-compose down
-
+```
 
 ## 6. Despliegue en la nube
 
@@ -75,32 +77,3 @@ Si deseas desplegar la aplicación en la nube, puedes seguir los siguientes paso
 ## Autor
 
 Este proyecto fue creado por Emanuel Prado Macat.
-
-
-
-
-
-
-
-
-
-
-## Expected result
-
-Listing containers must show one container running and the port mapping as below:
-```
-$ docker compose ps
-NAME                COMMAND             SERVICE             STATUS              PORTS
-flask-web-1         "python3 app.py"    web                 running             0.0.0.0:8000->8000/tcp
-```
-
-After the application starts, navigate to `http://localhost:8000` in your web browser or run:
-```
-$ curl localhost:8000
-Hello World!
-```
-
-Stop and remove the containers
-```
-$ docker compose down
-```
